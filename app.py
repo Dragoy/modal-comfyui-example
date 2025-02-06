@@ -11,7 +11,6 @@ from container_setup import image
 from enums.gpu import GPU
 from models import (civitai_models_to_download, hf_models_to_download,
                     wget_models_to_download)
-from util.download_helpers import civitai_dl, hf_dl, wget_dl
 
 app = modal.App(name="comfyui", image=image)
 output_vol = modal.Volume.from_name("comfyui-output", create_if_missing=True)
