@@ -51,3 +51,5 @@ image = (
     .run_commands(f"rm -rf {OUTPUT_DIR}")
     .run_commands(f"rm -rf {MODELS_DIR}")
 )
+
+image = image.add_local_python_source("config", "enums", "container_setup", "models", "util")
