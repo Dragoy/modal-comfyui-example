@@ -12,7 +12,7 @@ image = (
     .pip_install("uv")
     .run_commands("uv pip install --system --compile-bytecode huggingface_hub[hf_transfer]==0.28.1")
     .env({"HF_HUB_ENABLE_HF_TRANSFER": "1"})
-    .run_commands("uv pip install --system --compile-bytecode comfy-cli==1.3.6")
+    .run_commands("uv pip install --system --compile-bytecode comfy-cli")
     .run_commands("comfy --skip-prompt install --nvidia")
     .apt_install("libgl1-mesa-glx", "libglib2.0-0") # required for several custom nodes on Linux
 )

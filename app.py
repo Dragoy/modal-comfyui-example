@@ -87,16 +87,17 @@ def download_models():
 
 # start ComfyUI with `modal serve app.py`
 @app.function(
-    allow_concurrent_inputs=10,
-    concurrency_limit=1,
-    container_idle_timeout=30,
+    max_containers=1,
+    scaledown_window=30,
     timeout=1800,
-    gpu=[GPU.A10G, GPU.L4],
+    region="eu-west",
+    gpu=[GPU.A100_80GB],
     volumes={
         OUTPUT_DIR: output_vol,
         MODELS_DIR: model_vol
     }
 )
+@modal.concurrent(max_inputs=10)
 @modal.web_server(8000, startup_timeout=60)
 def ui():
     subprocess.Popen("comfy launch -- --listen 0.0.0.0 --port 8000", shell=True)
